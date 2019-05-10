@@ -1,8 +1,6 @@
 # Top10LocalDayCareCenters
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/top10_local_day_care_centers`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+It is created to present the top 10 local day care centers according to user input.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You will be asked for a zip code first, and then get a list of top 10 rated day care centers back, where you can input a number of a specific center and thus get more information from it.
 
 ## Development
 
@@ -32,7 +30,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/'adaptable-paradigm-2377'/top10_local_day_care_centers.
+Bug reports and pull requests are welcome on GitHub at https://github.com/chanwkkk/top10_local_day_care_centers.git.
 
 ## License
 

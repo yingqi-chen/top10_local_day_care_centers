@@ -50,8 +50,8 @@ class Cli
 
     if input.upcase=="Y"
          call
-       else
-       end
+      else
+      end
     end
 
    def list_centers(zip)
