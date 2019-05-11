@@ -1,29 +1,120 @@
+require "json"
+require "http"
+require "optparse"
+require 'pry'
+
+
+
+
 module Top10LocalDayCareCenters
+
 
 
   class Scraper
 
      def self.scrape_from_zip(zip)
-        center1=Center.new
-        center1.name="hello"
-        center1.address="123 Boardway, CO"
-        center1.url="https://www.yelp.com/biz/la-petite-academy-of-lakewood-lakewood"
+        businesses=Scraper.search(term="day care",zip)["businesses"]
+        all_business=[]
+        businesses.each do |business|
+           center=Center.new
+  #binding.pry
+          center.id=business["id"]
+          center.name=business["name"]
+          center.address=business["location"]["display_address"][0]
+          center.rating=business["rating"]
+          center.url=business["url"]
+          center.zip=business["location"]["zip_code"]
+          center.phone_number=business["display_phone"]
+          all_business<<center
+        end
 
-        center2=Center.new
-        center2.name="world"
-        center2.address="456 Boardway, CO"
-        center2.url="https://www.yelp.com/biz/ikid-academy-aurora"
-
-        [center1,center2]
+        all_business
      end
 
-     def self.scrape_from_url(center)
-        #designed to get deeper message like the phone number, website and rating
-        center.phone_number="12345678"
-        center.website="......."
-        center.rating="4.5"
-        center
+
+
+
+     # Place holders for Yelp Fusion's API key. Grab it
+     # from https://www.yelp.com/developers/v3/manage_app
+     API_KEY = "MJEH8ky-Ny4riDUbkRNhjiTIWYe6cZ2Hn-czwKppVnB1QcTdX4D0Z630AebMwutNYk1l5nY6NHK4YhtBH281NZCOOFpNtaQHAAUOjcn74YgkFmGQS42no5PCzojUXHYx"
+
+
+     # Constants, do not change these
+     API_HOST = "https://api.yelp.com"
+     SEARCH_PATH = "/v3/businesses/search"
+     BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
+
+
+     #DEFAULT_BUSINESS_ID = "yelp-san-francisco"
+    # DEFAULT_TERM = "dinner"
+     #DEFAULT_LOCATION = "San Francisco, CA"
+     SEARCH_LIMIT = 10
+
+
+     # Make a request to the Fusion search endpoint. Full documentation is online at:
+     # https://www.yelp.com/developers/documentation/v3/business_search
+     #
+     # term - search term used to find businesses
+     # location - what geographic location the search should happen
+     #
+     # Examples
+     #
+     #   search("burrito", "san francisco")
+     #   # => {
+     #          "total": 1000000,
+     #          "businesses": [
+     #            "name": "El Farolito"
+     #            ...
+     #          ]
+     #        }
+     #
+     #   search("sea food", "Seattle")
+     #   # => {
+     #          "total": 1432,
+     #          "businesses": [
+     #            "name": "Taylor Shellfish Farms"
+     #            ...
+     #          ]
+     #        }
+     #
+     # Returns a parsed json object of the request
+     def self.search(term, location)
+       url = "#{API_HOST}#{SEARCH_PATH}"
+       params = {
+         term: term,
+         location: location,
+         limit: SEARCH_LIMIT
+       }
+
+       response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
+       response.parse
      end
+
+
+     # Look up a business by a given business id. Full documentation is online at:
+     # https://www.yelp.com/developers/documentation/v3/business
+     #
+     # business_id - a string business id
+     #
+     # Examples
+     #
+     #   business("yelp-san-francisco")
+     #   # => {
+     #          "name": "Yelp",
+     #          "id": "yelp-san-francisco"
+     #          ...
+     #        }
+     #
+     # Returns a parsed json object of the request
+     def self.business(business_id)
+       url = "#{API_HOST}#{BUSINESS_PATH}#{business_id}"
+
+       response = HTTP.auth("Bearer #{API_KEY}").get(url)
+       response.parse
+     end
+
+
+
 
   end
 end

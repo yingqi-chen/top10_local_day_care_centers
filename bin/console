@@ -17,6 +17,6 @@ require_relative "../lib/top10_local_day_care_centers/center.rb"
 # require "pry"
 # Pry.start
 
-#require "irb"
-#IRB.start(__FILE__)
- Top10LocalDayCareCenters::Cli.new.call
+require "irb"
+IRB.start(__FILE__)
+ #Top10LocalDayCareCenters::Cli.new.call
