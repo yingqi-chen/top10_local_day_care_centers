@@ -15,8 +15,10 @@ class Cli
     #binding.pry
 
     if input.downcase=="exit"
+      # to check if input is 5 digit and are all numbers, since string changed to number will be 0
     elsif input.length==5 && input.to_i !=0
-      @zip=input# to check if input is 5 digit and are all numbers, since string changed to number will be 0
+      @zip=input #make zip an instance variable so I can use it in the second level of project, when people try to find out more  info
+      #for another center that is from a same place (having a same zip code)
       list_centers
       puts ""#just for a cleaner interface
     else puts "The zip code you input must be 5-digit numbers!"
