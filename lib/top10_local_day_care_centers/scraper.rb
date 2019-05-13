@@ -1,6 +1,7 @@
-require "json"
+
 require "http"
 require 'pry'
+require 'dotenv'
 
 
 
@@ -13,6 +14,7 @@ module Top10LocalDayCareCenters
 
      def self.scrape_from_zip(zip)
         businesses=Scraper.search(term="day care",zip)["businesses"]
+        binding.pry
         all_business=[]
         businesses.each do |business|
            center=Center.new
@@ -35,7 +37,7 @@ module Top10LocalDayCareCenters
 
      # Place holders for Yelp Fusion's API key. Grab it
      # from https://www.yelp.com/developers/v3/manage_app
-     API_KEY = "MJEH8ky-Ny4riDUbkRNhjiTIWYe6cZ2Hn-czwKppVnB1QcTdX4D0Z630AebMwutNYk1l5nY6NHK4YhtBH281NZCOOFpNtaQHAAUOjcn74YgkFmGQS42no5PCzojUXHYx"
+
 
 
      # Constants, do not change these
@@ -48,7 +50,7 @@ module Top10LocalDayCareCenters
     # DEFAULT_TERM = "dinner"
      #DEFAULT_LOCATION = "San Francisco, CA"
      SEARCH_LIMIT = 10
-     RATING="rating"
+      API_KEY ='MJEH8ky-Ny4riDUbkRNhjiTIWYe6cZ2Hn-czwKppVnB1QcTdX4D0Z630AebMwutNYk1l5nY6NHK4YhtBH281NZCOOFpNtaQHAAUOjcn74YgkFmGQS42no5PCzojUXHYx'
 
 
      # Make a request to the Fusion search endpoint. Full documentation is online at:
@@ -83,12 +85,12 @@ module Top10LocalDayCareCenters
        params = {
          term: term,
          location: location,
-         limit: SEARCH_LIMIT
-         #sort_by: Rating
+         limit: SEARCH_LIMIT,
+         sort_by: "rating"
 
        }
 
-       response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
+       response = HTTP.auth("Bearer #{ENV['API_KEY']}").get(url, params: params)
        response.parse
      end
   end
