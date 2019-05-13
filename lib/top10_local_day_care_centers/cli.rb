@@ -39,7 +39,6 @@ class Cli
 
    if input.upcase=="Y"
         call
-     else
      end
    end
 
@@ -99,7 +98,6 @@ end
 
      if input.upcase=="Y"
        list_centers
-       else
        end
      end
 

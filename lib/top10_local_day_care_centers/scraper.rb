@@ -48,6 +48,7 @@ module Top10LocalDayCareCenters
     # DEFAULT_TERM = "dinner"
      #DEFAULT_LOCATION = "San Francisco, CA"
      SEARCH_LIMIT = 10
+     RATING="rating"
 
 
      # Make a request to the Fusion search endpoint. Full documentation is online at:
@@ -83,6 +84,8 @@ module Top10LocalDayCareCenters
          term: term,
          location: location,
          limit: SEARCH_LIMIT
+         #sort_by: Rating
+
        }
 
        response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
