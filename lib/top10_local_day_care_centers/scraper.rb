@@ -1,15 +1,14 @@
 require "json"
 require "http"
-require "optparse"
 require 'pry'
 
 
 
 
+
+
+
 module Top10LocalDayCareCenters
-
-
-
   class Scraper
 
      def self.scrape_from_zip(zip)

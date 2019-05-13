@@ -1,7 +1,5 @@
-require 'pry'
+
 module Top10LocalDayCareCenters
-
-
 class Cli
   attr_accessor :center_array,:zip
 
@@ -62,7 +60,7 @@ class Cli
 
    def list_centers
   #this method is responsible to get info from the array return from scraper and turn data into readable formats
-    @center_array=Scraper.scrape_from_zip(@zip)
+    @center_array=Top10LocalDayCareCenters::Scraper.scrape_from_zip(@zip)
      #supposed to return an array of objects
      puts "" #just for a cleaner interface
     @center_array.each.with_index(1) do |center,i|
@@ -104,29 +102,6 @@ end
        else
        end
      end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 end
 end

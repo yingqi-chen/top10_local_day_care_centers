@@ -1,7 +1,7 @@
-module Top10LocalDayCareCenters
+#module Top10LocalDayCareCenters
 
 
-  class Center
+  class Top10LocalDayCareCenters::Center
     attr_accessor :phone_number,:address,:rating,:url,:name,:website, :id,:zip
 
 
@@ -10,4 +10,4 @@ module Top10LocalDayCareCenters
     end
 
   end
-end
+#end
