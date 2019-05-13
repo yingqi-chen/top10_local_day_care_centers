@@ -89,32 +89,5 @@ module Top10LocalDayCareCenters
        response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
        response.parse
      end
-
-
-     # Look up a business by a given business id. Full documentation is online at:
-     # https://www.yelp.com/developers/documentation/v3/business
-     #
-     # business_id - a string business id
-     #
-     # Examples
-     #
-     #   business("yelp-san-francisco")
-     #   # => {
-     #          "name": "Yelp",
-     #          "id": "yelp-san-francisco"
-     #          ...
-     #        }
-     #
-     # Returns a parsed json object of the request
-     def self.business(business_id)
-       url = "#{API_HOST}#{BUSINESS_PATH}#{business_id}"
-
-       response = HTTP.auth("Bearer #{API_KEY}").get(url)
-       response.parse
-     end
-
-
-
-
   end
 end
