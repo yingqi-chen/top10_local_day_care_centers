@@ -21,7 +21,7 @@ Or install it yourself as:
 ## Usage
 
 You will be asked for a zip code first, and then get a list of top 10 rated day care centers back, where you can input a number of a specific center and thus get more information from it.
-But to use it, you have to get your own yelp API, you can get it from: https://www.yelp.com/fusion
+But to use it, you have to get your own yelp API, you can get it from: https://www.yelp.com/fusion.
 Once you get it, try to create a file called `.env` the same level as the directory `bin` and `lib`. And then put "API_KEY=YOUR_API_KEY"  in the `.env` document, then it should be ok to run!
 
 ## Development
