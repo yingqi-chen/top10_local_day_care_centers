@@ -5,7 +5,7 @@ module Top10LocalDayCareCenters
     attr_accessor :phone_number,:address,:rating,:url,:name,:website, :id,:zip
     @@all={}
 
-    def initialize(zip)
+    def initialize
        #@zip=zip
        #find_or_create_by_zip with return an array and then anytime we need to push the object to where it belongs
        #right after it is born
