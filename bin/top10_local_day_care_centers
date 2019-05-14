@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 
+
 require_relative '../lib/top10_local_day_care_centers.rb'
 
 Top10LocalDayCareCenters::Cli.new.call

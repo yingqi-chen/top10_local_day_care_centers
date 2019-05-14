@@ -1,14 +1,4 @@
 
-require "http"
-require 'pry'
-require 'dotenv'
-
-
-
-
-
-
-
 module Top10LocalDayCareCenters
   class Scraper
 
