@@ -1,7 +1,9 @@
 
 module Top10LocalDayCareCenters
 class Cli
-  attr_accessor :center_array,:zip
+  attr_accessor :center_array,:zip,:zip_array
+
+  @zip_array=[]
 
    def call
      puts "Hello! Welcome to top 10 local day care centers."
@@ -17,6 +19,7 @@ class Cli
     elsif input.length==5 && input.to_i !=0
       @zip=input #make zip an instance variable so I can use it in the second level of project, when people try to find out more  info
       #for another center that is from a same place (having a same zip code)
+      get_centers
       list_centers
       puts ""#just for a cleaner interface
     else puts "The zip code you input must be 5-digit numbers!"
@@ -42,6 +45,7 @@ class Cli
      end
    end
 
+
   def specific_center
      puts "Tell me which place you are interested in?"
      puts "Or enter 'exit' to leave."
@@ -57,9 +61,14 @@ class Cli
 
 
 
-   def list_centers
+  def list_centers
   #this method is responsible to get info from the array return from scraper and turn data into readable formats
-    @center_array=Top10LocalDayCareCenters::Scraper.scrape_from_zip(@zip)
+  if  @zip_array.include?(@zip)
+    @center_array=Center.all[@zip]
+  else
+    @center_array=Center.get_centers_from_zip(@zip)
+    @zip_array<<@zip
+  end
      #supposed to return an array of objects
      puts "" #just for a cleaner interface
     @center_array.each.with_index(1) do |center,i|
