@@ -18,7 +18,7 @@ module Top10LocalDayCareCenters
         self.all[zip]=[]
         #pushing center objects to self.all[zip] array
         businesses=Scraper.search(term="day care",zip)["businesses"]
-        #binding.pry
+        binding.pry
         businesses.each do |business|
            center=Center.new
   #binding.pry
