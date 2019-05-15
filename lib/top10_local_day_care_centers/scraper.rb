@@ -2,23 +2,7 @@
 module Top10LocalDayCareCenters
   class Scraper
 
-     def self.scrape_from_zip(zip)
-       #this method is for pushing center objects to self.all[zip] array+assgining values to center object
-        businesses=Scraper.search(term="day care",zip)["businesses"]
-        #binding.pry
-        businesses.each do |business|
-           center=Center.new
-  #binding.pry
-          center.id=business["id"]
-          center.name=business["name"]
-          center.address=business["location"]["display_address"][0]
-          center.rating=business["rating"]
-          center.url=business["url"]
-          center.zip=business["location"]["zip_code"]
-          center.phone_number=business["display_phone"]
-          Center.all[zip]<<center
-        end
-     end
+    
 
 
 
