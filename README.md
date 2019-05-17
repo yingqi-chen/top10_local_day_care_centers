@@ -12,10 +12,20 @@ git clone git@github.com:chanwkkk/top10_local_day_care_centers.git
 
 And then go inside the folder by typing this in your terminal:
 
+```
 cd top10_local_day_care_centers
+```
+
+And then install all missing gems by input:
+```
+bundle install
+```
 
 And then you can run the program by running:
-.bin/top10_local_day_care_centers
+
+```
+ruby bin/top10_local_day_care_centers
+```
 
 ## Usage
 
