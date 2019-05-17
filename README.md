@@ -4,19 +4,18 @@ It is created to present the top 10 local day care centers according to user inp
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Put this to your terminal:
 
 ```ruby
-gem 'top10_local_day_care_centers'
+git clone git@github.com:chanwkkk/top10_local_day_care_centers.git
 ```
 
-And then execute:
+And then go inside the folder by typing this in your terminal:
 
-    $ bundle
+cd top10_local_day_care_centers
 
-Or install it yourself as:
-
-    $ gem install top10_local_day_care_centers
+And then you can run the program by running:
+.bin/top10_local_day_care_centers
 
 ## Usage
 
