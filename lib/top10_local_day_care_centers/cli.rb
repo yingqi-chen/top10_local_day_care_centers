@@ -114,7 +114,7 @@ def specific_center
 
      if input.upcase=="Y"
        list_centers
-       end
+       else end
      end
 
 end

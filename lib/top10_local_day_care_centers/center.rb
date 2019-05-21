@@ -6,19 +6,19 @@ module Top10LocalDayCareCenters
     @@all={}
 
     def initialize
-      
+
     end
 
     def self.all
       @@all
     end
 
-    
+
     def self.get_centers_from_zip(zip)
         self.all[zip]=[]
         #pushing center objects to self.all[zip] array
         businesses=Scraper.search(term="day care",zip)["businesses"]
-        binding.pry
+        #binding.pry
         businesses.each do |business|
            center=Center.new
   #binding.pry
@@ -33,7 +33,7 @@ module Top10LocalDayCareCenters
         end
         self.all[zip]
     end
-    
+
 
   end
 end
