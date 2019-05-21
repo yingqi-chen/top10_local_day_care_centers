@@ -37,16 +37,14 @@ end
     puts "Do you want to re-enter a zip code? [Y/N]"
     input=gets.strip
     #binding.pry
-    while !["Y","N"].include?(input.upcase)
+    if input.upcase=="Y"
+         call
+      elsif input.upcase=="N"
+      else
      puts "Wrong input!"
      puts "Give me only 'Y' or 'N' please."
      ending
     end
-
-   if input.upcase=="Y"
-        call
-     else
-     end
    end
 
   def get_centers
@@ -106,15 +104,14 @@ def specific_center
     def ending_specific_page
       puts "Do you want to know more information of other day care centers? [Y/N]"
       input=gets.strip
-      while !["Y","N"].include?(input.upcase)
+      if input.upcase=="Y"
+        list_centers
+      elsif input.upcase=="N"
+      else
        puts "Wrong input!"
        puts "Give me only 'Y' or 'N' please."
        ending_specific_page
       end
-
-     if input.upcase=="Y"
-       list_centers
-       else end
      end
 
 end
