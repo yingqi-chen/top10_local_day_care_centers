@@ -16,14 +16,9 @@ module Top10LocalDayCareCenters
      API_HOST = "https://api.yelp.com"
      SEARCH_PATH = "/v3/businesses/search"
      BUSINESS_PATH = "/v3/businesses/"  # trailing / because we append the business id to the path
-
-
-     #DEFAULT_BUSINESS_ID = "yelp-san-francisco"
-    # DEFAULT_TERM = "dinner"
-     #DEFAULT_LOCATION = "San Francisco, CA"
+    
      SEARCH_LIMIT = 10
-      API_KEY ='MJEH8ky-Ny4riDUbkRNhjiTIWYe6cZ2Hn-czwKppVnB1QcTdX4D0Z630AebMwutNYk1l5nY6NHK4YhtBH281NZCOOFpNtaQHAAUOjcn74YgkFmGQS42no5PCzojUXHYx'
-
+     
 
      # Make a request to the Fusion search endpoint. Full documentation is online at:
      # https://www.yelp.com/developers/documentation/v3/business_search
