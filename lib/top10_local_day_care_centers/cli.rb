@@ -50,14 +50,9 @@ class Cli
   end
 
   def get_centers
-  #this method is responsible to get info from the array return from scraper and turn data into readable formats
+  #this method is responsible to get info from the array return from center class
   #supposed to return an array of objects
-    if  @zip_array.include?(@zip)
-     @center_array=Center.all[@zip]
-    else
-     @center_array=Center.get_centers_from_zip(@zip)
-     @zip_array<<@zip
-    end
+  @center_array=Center.get_centers_from_zip(@zip)
   end
 
   def list_centers
