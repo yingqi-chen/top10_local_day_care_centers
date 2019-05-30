@@ -14,7 +14,9 @@ module Top10LocalDayCareCenters
     end
 
     def self.find_or_create(attributes_hash,zip)
-      self.all.find { |object| object.id==attributes_hash[:id]}||self.create(attributes_hash,zip)
+      center=self.all.find { |object| object.id==attributes_hash["id"]}||self.create(attributes_hash,zip)
+      center.matching_zip_codes<<zip unless center.matching_zip_codes.include?(zip)
+      center
     end
 
     def self.create(hash,zip)
@@ -39,6 +41,10 @@ module Top10LocalDayCareCenters
           Center.find_or_create(business,zip)
         end
       end
+    end
+
+    def self.get_matching_centers(zip)
+      self.all.select{|c|c.matching_zip_codes.include?(zip)}
     end
   end
 end

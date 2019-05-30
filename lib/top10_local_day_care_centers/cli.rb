@@ -2,14 +2,15 @@
 module Top10LocalDayCareCenters
 
 class Cli
-  attr_accessor :center_array,:zip,:zip_array
+  attr_accessor :center_array,:zip, :zip_array
 
   def initialize
-   @zip_array=[]
+    @zip_array=[]
   end
 
 
   def call
+
     puts "Hello! Welcome to top 10 local day care centers."
     puts "Here, by giving me a 5-digits zip code, I will return you the top 10 day care centers there！"
     puts "If you want to quit, please enter 'exit'."
@@ -21,7 +22,8 @@ class Cli
     if input.downcase=="exit"
     # to check if input is 5 digit and are all numbers, since string changed to number will be 0
     elsif input.length==5 && input.to_i !=0
-      @zip=input #make zip an instance variable so I can use it in the second level of project, when people try to find out more  info
+      @zip=input
+      #make zip an instance variable so I can use it in the second level of project, when people try to find out more  info
       #for another center that is from a same place (having a same zip code)
       get_centers
       list_centers
@@ -52,10 +54,16 @@ class Cli
   def get_centers
   #this method is responsible to get info from the array return from center class
   #supposed to return an array of objects
-  @center_array=Center.get_centers_from_zip(@zip)
+    if @zip_array.include?(@zip)
+      @center_array=Center.get_matching_centers(@zip)
+    else
+      @zip_array<<@zip
+      @center_array=Center.get_centers_from_zip(@zip)
+    end
   end
 
   def list_centers
+
     puts "" #just for a cleaner interface
     @center_array.each.with_index(1) do |center,i|
     puts "#{i}.#{center.name}  #{center.address}"
